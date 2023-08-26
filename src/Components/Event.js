@@ -82,8 +82,8 @@ const Event = ({ userType }) => {
               className={`${
                 activeSection === "past" ? "bg-blue-500 text-white" : ""
               } px-3 py-2 rounded-md text-sm font-medium border ${
-                activeSection === "past" ? "border-blue-500" : "border-gray-300"
-              } hover:bg-black hover:text-white`}
+                activeSection === "past" ? "" : "border-gray-300"
+              } hover:bg-black hover:text-white ease-in duration-300`}
             >
               Past
             </button>
@@ -93,9 +93,9 @@ const Event = ({ userType }) => {
                 activeSection === "registered" ? "bg-blue-500 text-white" : ""
               } px-3 py-2 rounded-md text-sm font-medium border ${
                 activeSection === "registered"
-                  ? "border-blue-500"
+                  ? ""
                   : "border-gray-300"
-              } hover:bg-black hover:text-white`}
+              } hover:bg-black hover:text-white ease-in duration-300`}
             >
               Registered
             </button>
@@ -105,9 +105,9 @@ const Event = ({ userType }) => {
                 activeSection === "upcoming" ? "bg-blue-500 text-white" : ""
               } px-3 py-2 rounded-md text-sm font-medium border ${
                 activeSection === "upcoming"
-                  ? "border-blue-500"
+                  ? ""
                   : "border-gray-300"
-              } hover:bg-black hover:text-white`}
+              } hover:bg-black hover:text-white ease-in duration-300`}
             >
               Upcoming
             </button>
@@ -152,7 +152,7 @@ const Event = ({ userType }) => {
           <div>
           <button
             onClick={handleCreateEventClick}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 ease-in duration-300"
           >
             Create Event
           </button>
@@ -169,8 +169,8 @@ const Event = ({ userType }) => {
               className={`${
                 activeSection === "past" ? "bg-blue-500 text-white" : ""
               } px-3 py-2 rounded-md text-sm font-medium border ${
-                activeSection === "past" ? "border-blue-500" : "border-gray-300"
-              } hover:bg-black hover:text-white`}
+                activeSection === "past" ? "" : "border-gray-300"
+              } hover:bg-black hover:text-white ease-in duration-200`}
             >
               Past
             </button>
@@ -180,9 +180,9 @@ const Event = ({ userType }) => {
                 activeSection === "upcoming" ? "bg-blue-500 text-white" : ""
               } px-3 py-2 rounded-md text-sm font-medium border ${
                 activeSection === "upcoming"
-                  ? "border-red-500"
+                  ? ""
                   : "border-gray-300"
-              } hover:bg-black hover:text-white`}
+              } hover:bg-black hover:text-white ease-in duration-300`}
             >
               Upcoming
             </button>
@@ -192,9 +192,9 @@ const Event = ({ userType }) => {
                 activeSection === "ongoing" ? "bg-blue-500 text-white" : ""
               } px-3 py-2 rounded-md text-sm font-medium border ${
                 activeSection === "ongoing"
-                  ? "border-blue-500"
+                  ? ""
                   : "border-gray-300"
-              } hover:bg-black hover:text-white`}
+              } hover:bg-black hover:text-white ease-in duration-300`}
             >
               Ongoing
             </button>
