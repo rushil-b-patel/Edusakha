@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EventCard from "./EventCard";
+import EventCreationForm from "./EventCreationForm";
 
 const Event = ({ userType }) => {
   const [eventData, setEventData] = useState({
@@ -7,6 +8,12 @@ const Event = ({ userType }) => {
     description: "",
     date: "",
   });
+
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  
+  const handleCreateEventClick = () => {
+    setShowCreateForm((prevShowCreateForm) => !prevShowCreateForm);
+  };
 
   const sampleEvent = {
     id: 1,
@@ -19,6 +26,15 @@ const Event = ({ userType }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEventData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleEventCreation = async (newEvent) => {
+    // TODO: Send newEvent to the server to create the event
+    // After the event is created, update the events list accordingly
+    console.log("Creating event:", newEvent);
+
+    // For now, let's just close the form
+    setShowCreateForm(false);
   };
 
   const handleSubmit = async (e) => {
@@ -133,6 +149,17 @@ const Event = ({ userType }) => {
         </div>
       ) : (
         <div>
+          <div>
+          <button
+            onClick={handleCreateEventClick}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          >
+            Create Event
+          </button>
+          {showCreateForm && (
+            <EventCreationForm onCreateEvent={handleEventCreation} />
+          )}
+        </div>
           <h2 className="text-2xl font-semibold mb-4 text-center">
             Your Events
           </h2>
