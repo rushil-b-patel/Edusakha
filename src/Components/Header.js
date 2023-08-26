@@ -24,7 +24,7 @@ const Header = () => {
             </li>
             <li>
                 <Link to='LoginForm'>
-                <button className='text-lg bg-orange-200 rounded-full px-4'>
+                <button className='text-lg bg-red-200 rounded-full px-4'>
                     Login
                 </button>
                 {/* <img

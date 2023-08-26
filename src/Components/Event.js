@@ -1,11 +1,20 @@
 import React, { useState } from "react";
+import EventCard from "./EventCard";
 
-const Event = ({ userType = "professor" }) => {
+const Event = ({ userType }) => {
   const [eventData, setEventData] = useState({
     title: "",
     description: "",
     date: "",
   });
+
+  const sampleEvent = {
+    id: 1,
+    title: "Sample Event",
+    description: "This is a sample event description.",
+    time: "2023-08-25 10:00 AM",
+    faculties: ["Faculty A", "Faculty B"],
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,26 +30,26 @@ const Event = ({ userType = "professor" }) => {
   const [activeSection, setActiveSection] = useState("registered");
 
   const registeredEvents = [
-    { id: 1, title: 'Event 1' },
-    { id: 2, title: 'Event 2' },
+    { id: 1, title: "Event 1" },
+    { id: 2, title: "Event 2" },
     // ... more registered events
   ];
 
   const ongoingEvents = [
-    { id: 1, title: 'Ongoing Event 1' },
-    { id: 2, title: 'Ongoing Event 2' },
+    { id: 1, title: "Ongoing Event 1" },
+    { id: 2, title: "Ongoing Event 2" },
     // ... more ongoing events
   ];
 
   const upcomingEvents = [
-    { id: 1, title: 'Upcoming Event 1' },
-    { id: 2, title: 'Upcoming Event 2' },
+    { id: 1, title: "Upcoming Event 1" },
+    { id: 2, title: "Upcoming Event 2" },
     // ... more upcoming events
   ];
 
   const pastEvents = [
-    { id: 1, title: 'Past Event 1' },
-    { id: 2, title: 'Past Event 2' },
+    { id: 1, title: "Past Event 1" },
+    { id: 2, title: "Past Event 2" },
     // ... more past events
   ];
 
@@ -51,20 +60,43 @@ const Event = ({ userType = "professor" }) => {
           <h2 className="text-2xl font-semibold mb-4 text-center">
             Your Events
           </h2>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Select Event Type:
-            </label>
-            <select
-              value={activeSection}
-              onChange={(e) => setActiveSection(e.target.value)}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+          <div className="mb-4 flex justify-center space-x-4">
+            <button
+              onClick={() => setActiveSection("past")}
+              className={`${
+                activeSection === "past" ? "bg-blue-500 text-white" : ""
+              } px-3 py-2 rounded-md text-sm font-medium border ${
+                activeSection === "past" ? "border-blue-500" : "border-gray-300"
+              } hover:bg-black hover:text-white`}
             >
-              <option value="registered">Registered Events</option>
-              <option value="past">Past Events</option>
-              <option value="upcoming">Upcoming Events</option>
-            </select>
+              Past
+            </button>
+            <button
+              onClick={() => setActiveSection("registered")}
+              className={`${
+                activeSection === "registered" ? "bg-blue-500 text-white" : ""
+              } px-3 py-2 rounded-md text-sm font-medium border ${
+                activeSection === "registered"
+                  ? "border-blue-500"
+                  : "border-gray-300"
+              } hover:bg-black hover:text-white`}
+            >
+              Registered
+            </button>
+            <button
+              onClick={() => setActiveSection("upcoming")}
+              className={`${
+                activeSection === "upcoming" ? "bg-blue-500 text-white" : ""
+              } px-3 py-2 rounded-md text-sm font-medium border ${
+                activeSection === "upcoming"
+                  ? "border-blue-500"
+                  : "border-gray-300"
+              } hover:bg-black hover:text-white`}
+            >
+              Upcoming
+            </button>
           </div>
+
           {activeSection === "registered" && (
             <div>
               <h3 className="text-lg font-semibold mb-2">Registered Events</h3>
@@ -73,6 +105,7 @@ const Event = ({ userType = "professor" }) => {
                   <li key={event.id}>{event.title}</li>
                 ))}
               </ul>
+              <EventCard event={sampleEvent} />
             </div>
           )}
           {activeSection === "upcoming" && (
@@ -100,22 +133,46 @@ const Event = ({ userType = "professor" }) => {
         </div>
       ) : (
         <div>
-          <h2 className="text-2xl font-semibold mb-4 text-center">Your Events</h2>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700">
-              Select Event Type:
-            </label>
-            <select
-              value={activeSection}
-              onChange={(e) => setActiveSection(e.target.value)}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+          <h2 className="text-2xl font-semibold mb-4 text-center">
+            Your Events
+          </h2>
+          <div className="mb-4 flex justify-center space-x-4">
+            <button
+              onClick={() => setActiveSection("past")}
+              className={`${
+                activeSection === "past" ? "bg-blue-500 text-white" : ""
+              } px-3 py-2 rounded-md text-sm font-medium border ${
+                activeSection === "past" ? "border-blue-500" : "border-gray-300"
+              } hover:bg-black hover:text-white`}
             >
-              <option value="ongoing">Ongoing Events</option>
-              <option value="past">Past Events</option>
-              <option value="upcoming">Upcoming Events</option>
-            </select>
+              Past
+            </button>
+            <button
+              onClick={() => setActiveSection("upcoming")}
+              className={`${
+                activeSection === "upcoming" ? "bg-blue-500 text-white" : ""
+              } px-3 py-2 rounded-md text-sm font-medium border ${
+                activeSection === "upcoming"
+                  ? "border-red-500"
+                  : "border-gray-300"
+              } hover:bg-black hover:text-white`}
+            >
+              Upcoming
+            </button>
+            <button
+              onClick={() => setActiveSection("ongoing")}
+              className={`${
+                activeSection === "ongoing" ? "bg-blue-500 text-white" : ""
+              } px-3 py-2 rounded-md text-sm font-medium border ${
+                activeSection === "ongoing"
+                  ? "border-blue-500"
+                  : "border-gray-300"
+              } hover:bg-black hover:text-white`}
+            >
+              Ongoing
+            </button>
           </div>
-          {activeSection === 'ongoing' && (
+          {activeSection === "ongoing" && (
             <div>
               <h3 className="text-lg font-semibold mb-2">Ongoing Events</h3>
               <ul>
@@ -125,7 +182,7 @@ const Event = ({ userType = "professor" }) => {
               </ul>
             </div>
           )}
-          {activeSection === 'upcoming' && (
+          {activeSection === "upcoming" && (
             <div>
               <h3 className="text-lg font-semibold mb-2">Upcoming Events</h3>
               <ul>
@@ -135,7 +192,7 @@ const Event = ({ userType = "professor" }) => {
               </ul>
             </div>
           )}
-          {activeSection === 'past' && (
+          {activeSection === "past" && (
             <div>
               <h3 className="text-lg font-semibold mb-2">Past Events</h3>
               <ul>

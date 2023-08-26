@@ -1,87 +1,96 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({
-    role: 'student',
-    email: '',
-    password: '',
-  });
+  const [userType, setUserType] = useState("student");
+  const [userId, setUserId] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  const handleUserTypeChange = (e) => {
+    setUserType(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Send login data to the server using API calls
-    console.log('Login Data:', formData);
-  };
-
-  const handleRoleChange = (e) => {
-    const { value } = e.target;
-    setFormData((prevData) => ({ ...prevData, role: value }));
+    // TODO: Perform login action based on user type
+    console.log("User Type:", userType);
+    console.log("User ID:", userId);
+    console.log("User Email:", userEmail);
+    console.log("Phone Number:", phoneNumber);
+    console.log("Password:", password);
   };
 
   return (
-    <div className="max-w-md mx-auto my-10 p-4 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
+    <div className="max-w-md mx-auto my-10 p-4 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-semibold mb-4 text-center">Log In</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="role" className="block text-sm font-medium text-gray-700">
-            Select Role:
+          <label className="block text-sm font-medium text-gray-700">
+            Select User Type:
           </label>
           <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleRoleChange}
+            value={userType}
+            onChange={handleUserTypeChange}
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
           >
             <option value="student">Student</option>
-            <option value="university">University</option>
+            <option value="professor">Professor/University</option>
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email:
+          <label className="block text-sm font-medium text-gray-700">
+            {userType === "student" ? "Student ID:" : "Professor ID:"}
           </label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            type="text"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
             required
+            className="border p-2 rounded-md w-full"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-gray-700">
+            {userType === "student" ? "Student Email:" : "Professor Email:"}
+          </label>
+          <input
+            type="email"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
+            required
+            className="border p-2 rounded-md w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Phone Number:
+          </label>
+          <input
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+            className="border p-2 rounded-md w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
             Password:
           </label>
           <input
             type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
+            className="border p-2 rounded-md w-full"
           />
         </div>
-        {/* Additional fields based on role */}
-        {/* {formData.role === 'student' && (
-          // Render student-specific fields
-        )} */}
-        {/* {formData.role === 'university' && (
-          // Render university-specific fields
-        )} */}
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
         >
-          Login
+          Log In
         </button>
       </form>
     </div>
