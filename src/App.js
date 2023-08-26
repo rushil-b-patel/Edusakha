@@ -5,6 +5,7 @@ import StudentEventPage from "./Components/StudentEventPage";
 import LoginForm from "./Components/LoginForm";
 import Event from "./Components/Event";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import SignupForm from "./Components/SignupForm";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           {/* <Route element={<ProtectedRoute />}> */}
           <Route path="/Event" element={<Event />} />
           <Route path="/StudentEventPage" element={<StudentEventPage />} />
+          <Route path="/SignupForm" element={<SignupForm />} />
           <Route path="/LoginForm" element={<LoginForm />} />
           {/* </Route> */}
         </Routes>

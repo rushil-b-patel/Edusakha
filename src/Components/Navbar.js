@@ -37,10 +37,10 @@ export default function Example() {
           </NavLink>
           <button>
           <NavLink
-            to="/LoginForm"
+            to="/SignupForm"
             className="font-semibold text-lg text-black mr-5 bg-blue-500 rounded p-2 hover:bg-blue-600 ease-in duration-300"
             >
-            Login
+            Signup/Login
           </NavLink>
             </button>
         </div>
@@ -102,7 +102,7 @@ export default function Example() {
                   className="block py-3 font-semibold text-white bg-blue-500 rounded p-2 hover:bg-blue-600 ease-in duration-300"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Log In
+                  Signup
                 </NavLink>
               </div>
             </div>

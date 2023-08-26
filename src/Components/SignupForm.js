@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 
-const LoginForm = () => {
+const SignupForm = () => {
   const [userType, setUserType] = useState("student");
   const [userId, setUserId] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -27,7 +27,7 @@ const LoginForm = () => {
 
   return (
     <div className="max-w-md mx-auto my-10 p-4 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Log in to your Account</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center">Sign Up to our Platform</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
@@ -44,6 +44,18 @@ const LoginForm = () => {
         </div>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
+            {userType === "student" ? "Student ID:" : "Professor ID:"}
+          </label>
+          <input
+            type="text"
+            value={userId}
+            onChange={(e) => setUserId(e.target.value)}
+            required
+            className="border p-2 rounded-md w-full"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
             {userType === "student" ? "Student Email:" : "Professor Email:"}
           </label>
           <input
@@ -54,7 +66,18 @@ const LoginForm = () => {
             className="border p-2 rounded-md w-full"
           />
         </div>
-
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Phone Number:
+          </label>
+          <input
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+            className="border p-2 rounded-md w-full"
+          />
+        </div>
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
             Password:
@@ -69,12 +92,12 @@ const LoginForm = () => {
         </div>
 
         <div className="text-sm font-medium text-black flex justify-between mb-3">
-            Don't have Account ?{" "}
+            Already registered?{" "}
             <Link
-              to="/SignupForm"
+              to="/LoginForm"
               className="text-blue-700 hover:underline dark:text-blue-500"
             >
-              Create an Account
+              Sigin to your Account
             </Link>
           </div>
 
@@ -83,11 +106,11 @@ const LoginForm = () => {
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
         >
-          Log In
+          Sign Up
         </button>
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default SignupForm;
