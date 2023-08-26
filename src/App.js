@@ -1,22 +1,24 @@
-import AdminEventForm from "./Components/Event";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./Components/Header";
+import Navbar from "./Components/Navbar";
 import HomePage from "./Components/HomePage";
 import StudentEventPage from "./Components/StudentEventPage";
 import LoginForm from "./Components/LoginForm";
 import Event from "./Components/Event";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <>
-        <Header />
+        <Navbar />
         <Routes>
           <Route path="/HomePage" element={<HomePage />} />
           <Route path="/" element={<HomePage />} />
+          {/* <Route element={<ProtectedRoute />}> */}
           <Route path="/Event" element={<Event />} />
           <Route path="/StudentEventPage" element={<StudentEventPage />} />
           <Route path="/LoginForm" element={<LoginForm />} />
+          {/* </Route> */}
         </Routes>
       </>
     </BrowserRouter>
