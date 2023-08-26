@@ -4,7 +4,8 @@ const EventCreationForm = ({ onCreateEvent }) => {
   const [newEvent, setNewEvent] = useState({
     title: "",
     description: "",
-    datetime: "",
+    startdatetime: "",
+    enddatetime: "",
     conductor: "",
   });
 
@@ -59,15 +60,32 @@ const EventCreationForm = ({ onCreateEvent }) => {
         </div>
         <div className="mb-2">
           <label
-            htmlFor="datetime"
+            htmlFor="startdatetime"
             className="block text-sm font-medium text-gray-700"
           >
-            Date and Time:
+            Date and Time(Starting):
           </label>
           <input
             type="datetime-local" // Use datetime-local input type
-            id="datetime"
-            name="datetime"
+            id="startdatetime"
+            name="startdatetime"
+            value={newEvent.startdatetime}
+            onChange={handleInputChange}
+            className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div className="mb-2">
+          <label
+            htmlFor="enddatetime"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Date and Time(Ending):
+          </label>
+          <input
+            type="datetime-local" // Use datetime-local input type
+            id="enddatetime"
+            name="enddatetime"
             value={newEvent.datetime}
             onChange={handleInputChange}
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
